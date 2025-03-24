@@ -6,15 +6,15 @@ let colorSelected;
 // Add a row
 function addR() {
    const table = document.getElementById("grid");
-    // Add first column if its 0
+    // Add first column if its 0, since a row needs a column
     if(numCols == 0){
         numCols = 1;
     }
 
     // Create a new row
     const newRow = table.insertRow(numRows);
-    for(let i = 0; i < numCols; i++){
-        const newCell = newRow.insertCell(i);
+    for(let c = 0; c < numCols; c++){
+        const newCell = newRow.insertCell(c);
         newCell.onclick = function(){
             newCell.style.backgroundColor = colorSelected;
         }
@@ -26,17 +26,17 @@ function addR() {
 // Add a column
 function addC() {
    const table = document.getElementById("grid");
-    // Add first row if its 0
+    // Add first row if its 0, since a clumn needs a row
     if(numRows == 0){
         addR();
     }
     else{
         //Create a new column
-        const newColumn = table.insertColumn(numCols);
-        for(let i = 0; i < numRows; i++){
-            const newCell = newColumn.insertCell(i);
+        for(let r = 0; r < numRows; r++){
+            const newColumn = table.rows[r];
+            const newCell = newColumn.insertCell(r);
             newCell.onclick = function(){
-            newCell.style.backgroundColor = colorSelected;
+                newCell.style.backgroundColor = colorSelected;
             }
         }
 
