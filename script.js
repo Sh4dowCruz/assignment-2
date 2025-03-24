@@ -25,7 +25,23 @@ function addR() {
 
 // Add a column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+   const table = document.getElementById("grid");
+    // Add first row if its 0
+    if(numRows == 0){
+        addR();
+    }
+    else{
+        //Create a new column
+        const newColumn = table.insertColumn(numCols);
+        for(let i = 0; i < numRows; i++){
+            const newCell = newColumn.insertCell(i);
+            newCell.onclick = function(){
+            newCell.style.backgroundColor = colorSelected;
+            }
+        }
+
+        numCols++;
+    }
 }
 
 // Remove a row
