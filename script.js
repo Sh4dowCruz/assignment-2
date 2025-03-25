@@ -14,7 +14,7 @@ function addR() {
     // Create a new row
     const newRow = table.insertRow(numRows);
     for(let c = 0; c < numCols; c++){
-        const newCell = newRow.insertCell(c);
+        const newCell = newRow.insertCell();
         newCell.onclick = function(){
             newCell.style.backgroundColor = colorSelected;
         }
@@ -34,7 +34,7 @@ function addC() {
         //Create a new column
         for(let r = 0; r < numRows; r++){
             const newColumn = table.rows[r];
-            const newCell = newColumn.insertCell(r);
+            const newCell = newColumn.insertCell();
             newCell.onclick = function(){
                 newCell.style.backgroundColor = colorSelected;
             }
@@ -92,8 +92,8 @@ function fillU(){
    for (let r = 0; r< numRows; r++){
     for (let c = 0;c< numCols; c++){
         const cell = table.rows[r].cells[c];
-        //Check if cell is not colored and if so, color it
-        if(cell.style.backgroundColor = "white"){
+        //Check if cell is not colored or its color is white then change to selected color
+        if (!cell.style.backgroundColor || cell.style.backgroundColor === "white") {
             cell.style.backgroundColor = colorSelected;
         }
     }
