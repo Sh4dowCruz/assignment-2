@@ -52,11 +52,32 @@ function removeR() {
         table.deleteRow(numRows - 1);
         numRows--;
     }
+
+    //If this is last row, remove the column
+    if(numRows == 0){
+        numCols = 0;
+    }
 }
 
 // Remove a column
 function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+    //This is to remove the last column
+    if(numCols > 0){
+        for(let r = 0; r < numRows; r++){
+            const delColumn = table.rows[r];
+            delColumn.deleteCell(numCols - 1);
+        }
+        numCols--;
+    }
+
+    //If this is last column, remove the row
+    if(numCols == 0){
+        while(numRows > 0){
+            table.deleteRow(numRows - 1);
+            numRows--;
+        }
+    }
 }
 
 // Set global variable for selected color
