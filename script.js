@@ -88,15 +88,38 @@ function selectColor(){
 
 // Fill all uncolored cells
 function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
+   const table = document.getElementById("grid");
+   for (let r = 0; r< numRows; r++){
+    for (let c = 0;c< numCols; c++){
+        const cell = table.rows[r].cells[c];
+        //Check if cell is not colored and if so, color it
+        if(cell.style.backgroundColor = "white"){
+            cell.style.backgroundColor = colorSelected;
+        }
+    }
+   }
 }
 
 // Fill all cells
 function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+    //Color all cellsd with selected color
+    for (let r = 0; r< numRows; r++){
+        for (let c = 0;c< numCols; c++){
+            const cell = table.rows[r].cells[c];
+            cell.style.backgroundColor = colorSelected;
+        }
+    }
 }
 
 // Clear all cells
 function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+    //Undo the color of all cells to white
+    for (let r = 0; r< numRows; r++){
+        for (let c = 0;c< numCols; c++){
+            const cell = table.rows[r].cells[c];
+            cell.style.backgroundColor = "white";
+        }
+    }
 }
